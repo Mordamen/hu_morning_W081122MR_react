@@ -8,7 +8,7 @@ import MuiNavbar from "./components/Navbar/MuiNavbar";
 import Navbar from "./components/Navbar/Navbar";
 import HomePage from "./pages/HomePage";
 import RegisterPage from "./pages/RegisterPage";
-import SignInPage from "./pages/SignInPage";
+import Login from "./pages/SignInPage";
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
       <HomePage />
       {/* <RegisterPage /> */}
       {/* <HomePage /> */}
-      {/* <SignInPage /> */}
+      {/* <Login /> */}
     </Container>
   );
 }
