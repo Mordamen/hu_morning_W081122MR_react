@@ -7,38 +7,22 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-// import Button from "@mui/material/Button";
+import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import { Link, NavLink } from "react-router-dom";
-import ROUTES from "../../routes/ROUTES";
 
-const pages = [
-  {
-    label: "Home",
-    url: ROUTES.HOME,
-  },
-  {
-    label: "Register",
-    url: ROUTES.REGISTER,
-  },
-  {
-    label: "Login",
-    url: ROUTES.LOGIN,
-  },
-];
+const pages = ["Products", "Pricing", "Blog"];
 
 const MuiNavbar = () => {
-  const [anchorElNav] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
 
-  // const handleOpenNavMenu = (event) => {
-  //   setAnchorElNav(event.currentTarget);
-  // };
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
 
-  // const handleCloseNavMenu = () => {
-  //   setAnchorElNav(null);
-  // };
-
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -51,18 +35,13 @@ const MuiNavbar = () => {
           {/* main navbar */}
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <NavLink key={page.url} to={page.url}>
-                <Typography
-                  sx={{
-                    my: 2,
-                    color: "white",
-                    display: "block",
-                    padding: "1em",
-                  }}
-                >
-                  {page.label}
-                </Typography>
-              </NavLink>
+              <Button
+                key={page}
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                {page}
+              </Button>
             ))}
           </Box>
           {/* hamburger with menu */}
@@ -76,7 +55,7 @@ const MuiNavbar = () => {
           >
             <IconButton
               size="large"
-              // onClick={handleOpenNavMenu}
+              onClick={handleOpenNavMenu}
               color="inherit"
             >
               <MenuIcon />
@@ -94,16 +73,14 @@ const MuiNavbar = () => {
                 horizontal: "left",
               }}
               open={Boolean(anchorElNav)}
-              // onClose={handleCloseNavMenu}
+              onClose={handleCloseNavMenu}
               sx={{
                 display: { xs: "block", md: "none" },
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={"links" + page.url}>
-                  <Link to={page.url}>
-                    <Typography textAlign="center">{page}</Typography>
-                  </Link>
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
