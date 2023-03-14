@@ -53,11 +53,18 @@ const MuiNavbar = () => {
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <NavLink key={page.url} to={page.url}>
-                <Typography
-                  sx={{ my: 2, color: "white", display: "block", p: 2 }}
-                >
-                  {page.label}
-                </Typography>
+                {({ isActive }) => (
+                  <Typography
+                    sx={{
+                      my: 2,
+                      color: `${isActive ? "red" : "white"}`,
+                      display: "block",
+                      p: 2,
+                    }}
+                  >
+                    {page.label}
+                  </Typography>
+                )}
               </NavLink>
             ))}
           </Box>
@@ -101,7 +108,17 @@ const MuiNavbar = () => {
                   onClick={handleCloseNavMenu}
                 >
                   <NavLink to={page.url}>
-                    <Typography textAlign="center">{page.label}</Typography>
+                    {/* if the current page and the link is the same then it will change the color of the link */}
+                    {({ isActive }) => (
+                      <Typography
+                        sx={{
+                          textAlign: "center",
+                          color: `${isActive ? "red" : ""}`,
+                        }}
+                      >
+                        {page.label}
+                      </Typography>
+                    )}
                   </NavLink>
                 </MenuItem>
               ))}
