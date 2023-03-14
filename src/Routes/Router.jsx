@@ -3,6 +3,7 @@ import HomePage from "../pages/HomePage";
 import RegisterPage from "../pages/RegisterPage";
 import LoginPage from "../pages/LoginPage";
 import ROUTES from "./ROUTES";
+import LoginPage from "../pages/LoginPage";
 
 const Router = () => {
   return (
